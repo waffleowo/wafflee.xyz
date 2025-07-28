@@ -1,0 +1,228 @@
+body, #root, .terminal-bg {
+  min-height: 100vh;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Fira Mono', 'Consolas', 'Menlo', 'Noto Sans Mono', monospace;
+  background: #181a20;
+}
+
+.terminal-bg {
+  background: #181a20;
+  min-height: 100vh;
+  min-width: 100vw;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.terminal-window {
+  background: linear-gradient(135deg, #181a20 80%, #23272e 100%);
+  border-radius: 12px;
+  border: 2.5px solid #d1aaff;
+  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.7), 0 0 16px 2px #d1aaff88, 0 1.5px 8px 0 rgba(127,255,212,0.04);
+  backdrop-filter: blur(18px) saturate(1.2);
+  width: 90vw;
+  max-width: 700px;
+  min-width: 240px;
+  min-height: 60vh;
+  padding: 0 0 20px 0;
+  overflow: hidden;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  animation: terminal-jump-in 0.7s cubic-bezier(.68,-0.55,.27,1.55);
+}
+
+.big-terminal {
+  max-width: 900px;
+  min-width: 350px;
+  min-height: 75vh;
+}
+
+.terminal-left {
+  align-items: flex-start;
+  text-align: left;
+}
+
+@keyframes terminal-jump-in {
+  0% {
+    opacity: 0;
+    transform: translateY(80px) scale(0.95);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-12px) scale(1.03);
+  }
+  80% {
+    transform: translateY(4px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.terminal-window::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.12;
+  background: url('https://www.transparenttextures.com/patterns/asfalt-dark.png'); /* subtle noise */
+  border-radius: 12px;
+}
+
+.terminal-header {
+  background: #23272e;
+  color: #7fffd4;
+  font-weight: bold;
+  padding: 16px 28px;
+  font-size: 1.2rem;
+  border-bottom: 1px solid #222;
+  letter-spacing: 1px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  font-family: inherit;
+}
+
+.terminal-body {
+  padding: 36px 28px 0 28px;
+  color: #e0e0e0;
+  min-height: 300px;
+  font-size: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+}
+
+.profile-pic {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #7fffd4;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+  margin-top: 18px;
+}
+
+.prompt {
+  color: #7fffd4;
+  font-weight: bold;
+}
+
+.text-green {
+  color: #a3e635;
+}
+.text-purple {
+  color: #c678dd;
+}
+.text-blue {
+  color: #61afef;
+}
+.text-white {
+  color: #e0e0e0;
+}
+.text-gray {
+  color: #888;
+}
+
+.link-cutiepaws {
+  color: #d17fff;
+  text-decoration: none;
+  margin-right: 12px;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+.link-cutiepaws:hover {
+  color: #a259ff;
+  text-decoration: underline;
+}
+
+.link-github {
+  color: #6e7cff;
+  text-decoration: none;
+  margin-right: 12px;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+.link-github:hover {
+  color: #444a57;
+  text-decoration: underline;
+}
+
+.link-telegram {
+  color: #29b6f6;
+  text-decoration: none;
+  margin-right: 12px;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+.link-telegram:hover {
+  color: #1769aa;
+  text-decoration: underline;
+}
+
+@media (max-width: 700px) {
+  .terminal-window {
+    max-width: 99vw;
+    min-width: 0;
+    min-height: 60vh;
+    padding: 0 0 10px 0;
+  }
+  .terminal-body {
+    padding: 18px 8px 0 8px !important;
+    font-size: 1rem;
+  }
+  .big-terminal {
+    max-width: 100vw;
+    min-width: 0;
+    min-height: 60vh;
+  }
+  .terminal-header {
+    font-size: 1rem;
+    padding: 10px 10px;
+  }
+  .terminal-body .prompt,
+  .terminal-body .text-green,
+  .terminal-body .text-purple,
+  .terminal-body .text-blue,
+  .terminal-body .text-white,
+  .terminal-body .text-gray {
+    font-size: 1rem !important;
+    word-break: break-all;
+  }
+}
+
+@media (max-width: 400px) {
+  .terminal-window {
+    max-width: 100vw;
+    min-width: 0;
+    min-height: 50vh;
+    padding: 0 0 4px 0;
+  }
+  .terminal-body {
+    padding: 8px 2px 0 2px !important;
+    font-size: 0.92rem;
+  }
+  .terminal-body .prompt,
+  .terminal-body .text-green,
+  .terminal-body .text-purple,
+  .terminal-body .text-blue,
+  .terminal-body .text-white,
+  .terminal-body .text-gray {
+    font-size: 0.92rem !important;
+  }
+}
